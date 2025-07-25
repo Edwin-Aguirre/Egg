@@ -12,8 +12,13 @@ config_version=5
 
 config/name="Egg"
 config/tags=PackedStringArray("udemy")
+run/main_scene="uid://bbaqeywbomoub"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://autoloads/global.gd"
 
 [display]
 
