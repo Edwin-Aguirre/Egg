@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8b6r6feetibu"]
+[gd_scene load_steps=10 format=3 uid="uid://8b6r6feetibu"]
 
 [ext_resource type="PackedScene" uid="uid://b2wwmgd8ulv5a" path="res://scenes/unit/unit.tscn" id="1_eknpb"]
 [ext_resource type="Script" uid="uid://cuuycleh0bgco" path="res://scenes/unit/enemies/enemy.gd" id="2_y2h4j"]
@@ -11,6 +11,9 @@ radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y2h4j"]
 radius = 150.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_osjar"]
+radius = 37.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uh37l"]
 radius = 40.0
@@ -36,6 +39,15 @@ collision_mask = 2
 position = Vector2(0, -30)
 shape = SubResource("CircleShape2D_y2h4j")
 
+[node name="HurtboxComponent" parent="." index="4"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+position = Vector2(0, -30)
+shape = SubResource("CircleShape2D_osjar")
+debug_color = Color(0.711187, 0.261943, 1, 0.42)
+
 [node name="HitboxComponent" parent="." index="5" instance=ExtResource("5_fd3kx")]
 collision_layer = 4
 collision_mask = 32
@@ -48,3 +60,9 @@ debug_color = Color(0.987816, 0.0454308, 0.255515, 0.42)
 [node name="HealthBar" parent="." index="7"]
 back_color = Color(0.0156863, 0.054902, 0.168627, 1)
 fill_color = Color(0.372549, 0.537255, 0.756863, 1)
+
+[node name="KnockbackTimer" type="Timer" parent="." index="9"]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]

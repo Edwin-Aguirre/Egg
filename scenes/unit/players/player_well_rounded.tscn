@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfs8wy7eg2odi"]
+[gd_scene load_steps=10 format=3 uid="uid://bfs8wy7eg2odi"]
 
 [ext_resource type="PackedScene" uid="uid://b2wwmgd8ulv5a" path="res://scenes/unit/unit.tscn" id="1_wkafa"]
 [ext_resource type="Texture2D" uid="uid://cproxhccob85g" path="res://assets/sprites/Players/Player_1.png" id="2_etcc1"]
 [ext_resource type="Script" uid="uid://dluogmkxrkyfd" path="res://scenes/unit/players/player.gd" id="2_xa7el"]
 [ext_resource type="Resource" uid="uid://b3mg5yd6iojlj" path="res://resources/units/players/stats_player_well_rounded.tres" id="3_0kki1"]
 [ext_resource type="Script" uid="uid://bk46xi0ki33vn" path="res://scenes/unit/players/trail.gd" id="4_ht2l1"]
+[ext_resource type="Script" uid="uid://b4q03lkwdqdwf" path="res://scenes/unit/players/weapon_container.gd" id="6_viu20"]
 
 [sub_resource type="Curve" id="Curve_viu20"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -68,6 +69,90 @@ shape = SubResource("CircleShape2D_ht2l1")
 [node name="HealthBar" parent="." index="8"]
 back_color = Color(0.137255, 0.0196078, 0.027451, 1)
 fill_color = Color(1, 0.290196, 0.454902, 1)
+
+[node name="WeaponContainer" type="Node2D" parent="." index="10"]
+script = ExtResource("6_viu20")
+
+[node name="One" type="Node2D" parent="WeaponContainer" index="0"]
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="WeaponContainer/One" index="0"]
+position = Vector2(0, -15)
+
+[node name="Two" type="Node2D" parent="WeaponContainer" index="1"]
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="WeaponContainer/Two" index="0"]
+position = Vector2(40, 20)
+
+[node name="Marker2D2" type="Marker2D" parent="WeaponContainer/Two" index="1"]
+position = Vector2(-40, 20)
+
+[node name="Three" type="Node2D" parent="WeaponContainer" index="2"]
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="WeaponContainer/Three" index="0"]
+position = Vector2(40, 20)
+
+[node name="Marker2D2" type="Marker2D" parent="WeaponContainer/Three" index="1"]
+position = Vector2(-40, 20)
+
+[node name="Marker2D3" type="Marker2D" parent="WeaponContainer/Three" index="2"]
+position = Vector2(0, -115)
+
+[node name="Four" type="Node2D" parent="WeaponContainer" index="3"]
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="WeaponContainer/Four" index="0"]
+position = Vector2(40, 20)
+
+[node name="Marker2D2" type="Marker2D" parent="WeaponContainer/Four" index="1"]
+position = Vector2(-40, 20)
+
+[node name="Marker2D3" type="Marker2D" parent="WeaponContainer/Four" index="2"]
+position = Vector2(40, -115)
+
+[node name="Marker2D4" type="Marker2D" parent="WeaponContainer/Four" index="3"]
+position = Vector2(-40, -115)
+
+[node name="Five" type="Node2D" parent="WeaponContainer" index="4"]
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="WeaponContainer/Five" index="0"]
+position = Vector2(40, 20)
+
+[node name="Marker2D2" type="Marker2D" parent="WeaponContainer/Five" index="1"]
+position = Vector2(-40, 20)
+
+[node name="Marker2D3" type="Marker2D" parent="WeaponContainer/Five" index="2"]
+position = Vector2(60, -40)
+
+[node name="Marker2D4" type="Marker2D" parent="WeaponContainer/Five" index="3"]
+position = Vector2(-60, -40)
+
+[node name="Marker2D5" type="Marker2D" parent="WeaponContainer/Five" index="4"]
+position = Vector2(0, -115)
+
+[node name="Six" type="Node2D" parent="WeaponContainer" index="5"]
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="WeaponContainer/Six" index="0"]
+position = Vector2(35, 20)
+
+[node name="Marker2D2" type="Marker2D" parent="WeaponContainer/Six" index="1"]
+position = Vector2(-35, 20)
+
+[node name="Marker2D3" type="Marker2D" parent="WeaponContainer/Six" index="2"]
+position = Vector2(35, -115)
+
+[node name="Marker2D4" type="Marker2D" parent="WeaponContainer/Six" index="3"]
+position = Vector2(-35, -115)
+
+[node name="Marker2D5" type="Marker2D" parent="WeaponContainer/Six" index="4"]
+position = Vector2(60, -45)
+
+[node name="Marker2D6" type="Marker2D" parent="WeaponContainer/Six" index="5"]
+position = Vector2(-60, -45)
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="TrailTimer" to="Visuals/Trail" method="_on_trail_timer_timeout"]

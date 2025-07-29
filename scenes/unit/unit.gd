@@ -22,12 +22,12 @@ func _on_hurtbox_component_on_damage(hitbox: HitboxComponent) -> void:
 	
 	var blocked := Global.get_chance_success(stats.block_chance / 100)
 	if blocked:
-		Global.on_create_block_text.emit(self)
+		Global.emit_on_create_block_text(self)
 		return
 	
 	set_flash_material()
 	health_component.take_damage(hitbox.damage)
-	Global.on_create_damage_text.emit(self, hitbox)
+	Global.emit_on_create_damage_text(self, hitbox)
 
 func _on_flash_timer_timeout() -> void:
 	sprite.material = null

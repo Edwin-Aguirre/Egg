@@ -36,3 +36,12 @@ position = Vector2(-283, -244)
 
 [node name="EnemyChaserSlow3" parent="." instance=ExtResource("6_jx0ua")]
 position = Vector2(-283, 243)
+
+[node name="EnemyChaserSlow4" parent="." instance=ExtResource("6_jx0ua")]
+position = Vector2(-644, 0)
+
+[node name="EnemyChaserSlow5" parent="." instance=ExtResource("6_jx0ua")]
+position = Vector2(-644, -244)
+
+[node name="EnemyChaserSlow6" parent="." instance=ExtResource("6_jx0ua")]
+position = Vector2(-644, 243)

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemWeapon" load_steps=6 format=3 uid="uid://dfg1ohjgjfl02"]
+
+[ext_resource type="Texture2D" uid="uid://d8op56q0uwh1" path="res://assets/sprites/Weapons/Icons/weapon_axe_icon.png" id="1_wusse"]
+[ext_resource type="Script" uid="uid://ce1vrox2pt5gu" path="res://resources/items/weapons/item_weapon.gd" id="1_yy6db"]
+[ext_resource type="PackedScene" uid="uid://bwkwq5k2gleqd" path="res://scenes/weapons/melee/weapon_axe.tscn" id="2_67gbg"]
+[ext_resource type="Resource" uid="uid://bc28c1e48war" path="res://resources/items/weapons/melee/axe/stats_axe_1.tres" id="4_7j24w"]
+[ext_resource type="Resource" uid="uid://bmut1orrlnh3t" path="res://resources/items/weapons/melee/axe/item_axe_2.tres" id="5_1in0c"]
+
+[resource]
+script = ExtResource("1_yy6db")
+type = 0
+scene = ExtResource("2_67gbg")
+stats = ExtResource("4_7j24w")
+upgrade_to = ExtResource("5_1in0c")
+item_name = "Axe I"
+item_icon = ExtResource("1_wusse")
+item_tier = 0
+item_type = 0
+item_cost = 22
+metadata/_custom_type_script = "uid://ce1vrox2pt5gu"
