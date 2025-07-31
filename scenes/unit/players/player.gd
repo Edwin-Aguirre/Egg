@@ -27,7 +27,7 @@ func _ready() -> void:
 	#add_weapon(preload("res://resources/items/weapons/range/laser/item_laser_1.tres"))
 	#add_weapon(preload("res://resources/items/weapons/range/revolver/item_revolver_1.tres"))
 	#add_weapon(preload("res://resources/items/weapons/range/shotgun/item_shotgun_1.tres"))
-	add_weapon(preload("res://resources/items/weapons/range/smg/item_smg_1.tres"))
+	#add_weapon(preload("res://resources/items/weapons/range/smg/item_smg_1.tres"))
 	
 
 func _process(delta: float) -> void:
