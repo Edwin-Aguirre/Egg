@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://cwg3xk07m71t2"]
 
-[ext_resource type="Texture2D" uid="uid://bf4ls8ho3cuqa" path="res://assets/sprites/Enemies/Enemy_2.png" id="1_ymlpp"]
+[ext_resource type="Texture2D" uid="uid://c6vplmpl4q4jr" path="res://assets/sprites/Enemies/Enemy_3.png" id="1_ymlpp"]
 [ext_resource type="Script" uid="uid://bcoxmjalpiba2" path="res://resources/units/unit_stats.gd" id="2_86dbv"]
 
 [resource]
 script = ExtResource("2_86dbv")
-name = "Chaser Mid"
+name = "Chaser Fast"
 type = 1
 icon = ExtResource("1_ymlpp")
 health = 8
@@ -16,4 +16,7 @@ speed = 300
 luck = 0.0
 block_chance = 7.0
 gold_drop = 2
+hp_regen = 0.0
+life_steal = 0.0
+harvesting = 0.0
 metadata/_custom_type_script = "uid://bcoxmjalpiba2"

@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://d4ab0iar6f2qa"]
 
-[ext_resource type="Texture2D" uid="uid://c6vplmpl4q4jr" path="res://assets/sprites/Enemies/Enemy_3.png" id="1_ab1gs"]
+[ext_resource type="Texture2D" uid="uid://emsi6ifyt0vf" path="res://assets/sprites/Enemies/Enemy_5.png" id="1_0ttbq"]
 [ext_resource type="Script" uid="uid://bcoxmjalpiba2" path="res://resources/units/unit_stats.gd" id="2_mh3yp"]
 
 [resource]
 script = ExtResource("2_mh3yp")
-name = "Chaser Fast"
+name = "Charger"
 type = 1
-icon = ExtResource("1_ab1gs")
+icon = ExtResource("1_0ttbq")
 health = 6
 health_increase_per_wave = 2.5
 damage = 1.5
@@ -16,4 +16,7 @@ speed = 350
 luck = 0.0
 block_chance = 5.0
 gold_drop = 2
+hp_regen = 0.0
+life_steal = 0.0
+harvesting = 0.0
 metadata/_custom_type_script = "uid://bcoxmjalpiba2"
