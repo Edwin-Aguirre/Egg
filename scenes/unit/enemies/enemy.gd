@@ -75,3 +75,6 @@ func _on_hurtbox_component_on_damage(hitbox: HitboxComponent) -> void:
 
 func _on_knockback_timer_timeout() -> void:
 	reset_knockback()
+
+func _on_health_component_on_unit_died() -> void:
+	Global.emit_on_enemy_died(self)

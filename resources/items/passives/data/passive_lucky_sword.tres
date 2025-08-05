@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemPassive" load_steps=3 format=3 uid="uid://bqj3dgrh5eet"]
+
+[ext_resource type="Texture2D" uid="uid://cvqbrfm8g7paj" path="res://assets/sprites/Upgrades/10.png" id="1_846vq"]
+[ext_resource type="Script" uid="uid://coh3w48oq6n1h" path="res://resources/items/passives/item_passive.gd" id="2_dtac7"]
+
+[resource]
+script = ExtResource("2_dtac7")
+add_value = 15.0
+add_stats = "luck"
+remove_value = 0.0
+remove_stats = ""
+item_name = "Lucky Sword"
+item_icon = ExtResource("1_846vq")
+item_tier = 2
+item_type = 2
+item_cost = 85
+metadata/_custom_type_script = "uid://coh3w48oq6n1h"

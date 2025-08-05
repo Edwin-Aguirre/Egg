@@ -12,7 +12,11 @@ class_name Arena
 @onready var wave_time_label: Label = %WaveTimeLabel
 
 @onready var spawner: Spawner = $Spawner
-@onready var upgrade_panel: UpgradePanel = $GameUI/UpgradePanel
+@onready var upgrade_panel: UpgradePanel = %UpgradePanel
+@onready var shop_panel: ShopPanel = %ShopPanel
+@onready var coins_bag: CoinsBag = %CoinsBag
+
+var gold_list: Array[Coins]
 
 func _ready() -> void:
 	Global.player = player
@@ -20,6 +24,7 @@ func _ready() -> void:
 	Global.on_create_damage_text.connect(_on_create_damage_text)
 	Global.on_upgrade_selected.connect(_on_upgrade_selected)
 	Global.on_create_heal_text.connect(_on_create_heal_text)
+	Global.on_enemy_died.connect(_on_enemy_died)
 	
 	spawner.start_wave()
 
@@ -60,10 +65,42 @@ func show_upgrades() -> void:
 	upgrade_panel.load_upgrades(spawner.wave_index)
 	upgrade_panel.show()
 
+func spawn_coins(enemy: Enemy) -> void:
+	var random_angle := randf_range(0, TAU)
+	var offset := Vector2.RIGHT.rotated(random_angle) * 35
+	var spawn_position := enemy.global_position + offset
+	
+	var gold_instance := Global.COINS_SCENE.instantiate() as Coins
+	gold_list.append(gold_instance)
+	
+	gold_instance.global_position = spawn_position
+	gold_instance.value = enemy.stats.gold_drop
+	call_deferred("add_child", gold_instance)
+
+func clean_arena() -> void:
+	if gold_list.size() > 0:
+		var target_center_pos := coins_bag.global_position + coins_bag.size / 2.0
+		for gold in gold_list:
+			if is_instance_valid(gold):
+				var gold_item := gold as Coins
+				gold_item.set_collection_target(target_center_pos)
+	
+	gold_list.clear()
+
 func _on_upgrade_selected() -> void:
 	upgrade_panel.hide()
-	start_new_wave()
+	shop_panel.load_shop(spawner.wave_index)
+	shop_panel.show()
 
 func _on_spawner_on_wave_completed() -> void:
 	if not Global.player: return
+	clean_arena()
 	show_upgrades()
+	clean_arena()
+
+func _on_shop_panel_on_shop_next_wave() -> void:
+	shop_panel.hide()
+	start_new_wave()
+
+func _on_enemy_died(enemy: Enemy) -> void:
+	spawn_coins(enemy)

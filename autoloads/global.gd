@@ -5,9 +5,12 @@ signal on_create_damage_text(unit: Node2D, hitbox: HitboxComponent)
 signal on_create_heal_text(unit: Node2D, heal: float)
 
 signal on_upgrade_selected
+signal on_enemy_died(enemy: Enemy)
 
 const FLASH_MATERIAL = preload("res://effects/flash_material.tres")
 const FLOATING_TEXT = preload("res://scenes/ui/floating_text/floating_text.tscn")
+const COINS_SCENE = preload("res://scenes/coins/coins.tscn")
+const ITEM_CARD_SCENE = preload("res://scenes/ui/item_card/item_card.tscn")
 
 const COMMON_STYLE = preload("res://styles/common_style.tres")
 const EPIC_STYLE = preload("res://styles/epic_style.tres")
@@ -20,6 +23,18 @@ const UPGRADE_PROBABILITY_CONFIG = {
 	"legendary": { "start_wave": 7, "base_multi": 0.0023 },
 }
 
+const SHOP_PROBABILITY_CONFIG = {
+	"rare": { "start_wave": 2, "base_multi": 0.10 },
+	"epic": { "start_wave": 4, "base_multi": 0.06 },
+	"legendary": { "start_wave": 7, "base_multi": 0.01 },
+}
+
+const TIER_COLORS: Dictionary[UpgradeTier, Color] = {
+	UpgradeTier.RARE: Color(0.0, 0.557, 0.741),
+	UpgradeTier.EPIC: Color(0.478, 0.251, 0.71),
+	UpgradeTier.LEGENDARY: Color(0.906, 0.212, 0.212),
+}
+
 enum UpgradeTier{
 	COMMON,
 	RARE,
@@ -30,6 +45,9 @@ enum UpgradeTier{
 var coins: int
 var player: Player
 var game_paused := false
+
+var selected_weapon: ItemWeapon
+var equipped_weapons: Array[ItemWeapon]
 
 func get_harvesting_coins() -> void:
 	coins += player.stats.harvesting
@@ -147,3 +165,6 @@ func emit_on_upgrade_selected():
 
 func emit_on_create_heal_text(unit: Node2D, heal: float):
 	on_create_heal_text.emit(unit, heal)
+
+func emit_on_enemy_died(enemy: Enemy):
+	on_enemy_died.emit(enemy)
