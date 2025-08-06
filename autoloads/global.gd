@@ -125,8 +125,8 @@ func calculate_tier_probability(current_wave: int, config: Dictionary) -> Array[
 	common_chance = 1.0 - total_non_common_chances
 	
 	# Debug print
-	print("Wave: %d, Luck: %.1f => Chances: C:%.2f R:%.2f E:%.2f L:%.2f" % 
-	[current_wave, Global.player.stats.luck, common_chance, rare_chance, epic_chance, legendary_chance])
+	#print("Wave: %d, Luck: %.1f => Chances: C:%.2f R:%.2f E:%.2f L:%.2f" % 
+	#[current_wave, Global.player.stats.luck, common_chance, rare_chance, epic_chance, legendary_chance])
 	
 	return [
 		max(0.0, common_chance),

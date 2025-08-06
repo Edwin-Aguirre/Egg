@@ -6,6 +6,8 @@ class_name MeleeBehavior
 func execute_attack() -> void:
 	weapon.is_attacking = true
 	
+	SoundManager.play_sound(SoundManager.Sound.PUNCH)
+	
 	var tween := create_tween()
 	
 	var recoil_pos := Vector2(weapon.atk_start_pos.x - weapon.data.stats.recoil, weapon.atk_start_pos.y)

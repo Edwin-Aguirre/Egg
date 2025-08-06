@@ -60,6 +60,8 @@ func _on_weapon_selected(weapon: ItemWeapon) -> void:
 	Global.main_weapon_selected = weapon
 
 func _on_continue_button_pressed() -> void:
+	SoundManager.play_sound(SoundManager.Sound.UI)
+	
 	if not Global.main_player_selected and not Global.main_weapon_selected:
 		return
 	
