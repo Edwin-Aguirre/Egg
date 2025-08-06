@@ -21,8 +21,6 @@ func _ready() -> void:
 	super._ready()
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
-	
-	add_weapon(preload("res://resources/items/weapons/melee/punch/item_punch_1.tres"))
 
 func _process(delta: float) -> void:
 	if Global.game_paused: return
@@ -52,7 +50,7 @@ func add_weapon(data: ItemWeapon) -> void:
 	weapon_container.update_weapons_position(current_weapons)
 
 func update_player_new_wave() -> void:
-	stats.health += stats.health_increase_per_wave
+	stats.health += int(stats.health_increase_per_wave)
 	health_component.setup(stats)
 
 func update_animations() -> void:

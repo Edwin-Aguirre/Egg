@@ -11,6 +11,8 @@ const FLASH_MATERIAL = preload("res://effects/flash_material.tres")
 const FLOATING_TEXT = preload("res://scenes/ui/floating_text/floating_text.tscn")
 const COINS_SCENE = preload("res://scenes/coins/coins.tscn")
 const ITEM_CARD_SCENE = preload("res://scenes/ui/item_card/item_card.tscn")
+const SELECTION_CARD_SCENE = preload("res://scenes/ui/selection_panel/selection_card.tscn")
+const SPAWN_EFFECT_SCENE = preload("res://scenes/effects/enemy_spawn_effect.tscn")
 
 const COMMON_STYLE = preload("res://styles/common_style.tres")
 const EPIC_STYLE = preload("res://styles/epic_style.tres")
@@ -35,6 +37,14 @@ const TIER_COLORS: Dictionary[UpgradeTier, Color] = {
 	UpgradeTier.LEGENDARY: Color(0.906, 0.212, 0.212),
 }
 
+var available_players: Dictionary[String, PackedScene] = {
+	"Brawler": preload("res://scenes/unit/players/player_brawler.tscn"),
+	"Bunny": preload("res://scenes/unit/players/player_bunny.tscn"),
+	"Crazy": preload("res://scenes/unit/players/player_crazy.tscn"),
+	"Knight": preload("res://scenes/unit/players/player_knight.tscn"),
+	"Well Rounded": preload("res://scenes/unit/players/player_well_rounded.tscn")
+}
+
 enum UpgradeTier{
 	COMMON,
 	RARE,
@@ -46,8 +56,16 @@ var coins: int
 var player: Player
 var game_paused := false
 
-var selected_weapon: ItemWeapon
+var main_player_selected: UnitStats
+var main_weapon_selected: ItemWeapon
+
 var equipped_weapons: Array[ItemWeapon]
+
+func get_selected_player() -> Player:
+	var player_scene := available_players[main_player_selected.name]
+	var player_instance := player_scene.instantiate()
+	player = player_instance
+	return player
 
 func get_harvesting_coins() -> void:
 	coins += player.stats.harvesting
