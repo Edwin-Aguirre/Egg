@@ -5,6 +5,7 @@
 
 [node name="SelectionCard" type="Button"]
 custom_minimum_size = Vector2(128, 128)
+theme_override_styles/hover = ExtResource("1_rnf3l")
 theme_override_styles/normal = ExtResource("1_rnf3l")
 icon_alignment = 1
 expand_icon = true

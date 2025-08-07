@@ -21,3 +21,10 @@ func _on_custom_button_pressed() -> void:
 		item_data.apply_upgrade()
 		SoundManager.play_sound(SoundManager.Sound.UI)
 		Global.emit_on_upgrade_selected()
+
+func _on_custom_button_mouse_entered() -> void:
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector2(1.07,1.07), 0.1)
+	
+	if tween.finished:
+		tween.tween_property(self, "scale", Vector2(1,1), 0.1)

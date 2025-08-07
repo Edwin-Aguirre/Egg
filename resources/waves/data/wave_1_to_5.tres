@@ -41,11 +41,11 @@ metadata/_custom_type_script = "uid://v7v4pv5al6bg"
 [resource]
 script = ExtResource("1_cx7cn")
 from = 1
-to = 10
+to = 99
 wave_time = 20.0
 units = Array[ExtResource("2_78wao")]([SubResource("Resource_aei4b"), SubResource("Resource_w8f67"), SubResource("Resource_lryp7"), SubResource("Resource_b7t5s"), SubResource("Resource_nujs8")])
 spawn_type = 1
 fixed_spawn_time = 1.0
 min_spawn_time = 0.5
-max_spawn_time = 2.0
+max_spawn_time = 1.0
 metadata/_custom_type_script = "uid://bob0jxrsovqyj"

@@ -32,3 +32,10 @@ func _on_buy_button_pressed() -> void:
 		Global.coins -= shop_item.item_cost
 		on_item_purchased.emit(shop_item)
 		queue_free()
+
+func _on_buy_button_mouse_entered() -> void:
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector2(1.04,1.04), 0.1)
+	
+	if tween.finished:
+		tween.tween_property(self, "scale", Vector2(1,1), 0.1)
